@@ -190,9 +190,12 @@ The analysis revealed several important patterns:
 
 2. **Service Adoption Impact**: Customers with security-related services (online security, backup, protection) showed 67% lower churn rates.
 
-3. **Geographic Concentration**: High-churn customers clustered in specific cities, enabling targeted retention campaigns.
+3. **Geographic Concentration**: High-churn customers clustered in specific cities, with 63% of churned accounts concentrated in just 7 urban markets. Markets with robust competitor presence showed churn rates 2.3x higher than areas with limited competition. Interestingly, suburban zones with median household incomes above $85,000 exhibited particularly high vulnerability to competitor offers.
 
 4. **Price Sensitivity**: Customers with charges 15-20% above segment average had double the churn rate.
+
+5. **Competitive Pressure**: Competitor offers accounted for 45% of all churn reasons, with price-sensitive customers in the month-to-month segment being 3.2x more likely to switch providers. The data reveals that competitors' promotional pricing and bundled service packages were particularly effective at attracting high-ARPU (Average Revenue Per User) customers with minimal service attachments.
+
 
 ## Implementation and Operations
 
@@ -211,7 +214,7 @@ $Files = @(
 
 This approach ensures the entire pipeline can be replicated across environments.
 
-## Best Practices and Lessons Learned
+## Best Practices
 
 1. **Modular Design**: Breaking analysis into focused functions improved maintainability
 2. **Database Performance**: Normalized schema with appropriate indexes enabled faster queries

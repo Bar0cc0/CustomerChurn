@@ -120,6 +120,7 @@ class Plot:
 				).set_fontsize(8)
 				self.ax[self.idx].axis('off')
 			case 'box':
+				sns.boxplot(data=dataframe, ax=self.ax[self.idx], **kwargs)
 				self.ax[self.idx].set_ylabel('')
 				self.ax[self.idx].set_xlabel('')
 				self.ax[idx].set_xlabel('')
@@ -324,11 +325,13 @@ print(
 
 # Check for Churn Categories and Reasons
 def check_churn_categories() -> None:
-	churn_reasons = df['Churn_Reason'].value_counts()
-	churn_categories = df['Churn_Category'].value_counts()
+	churn_subset = df.query("Customer_Status == 'Churned'")
+	churn_reasons = churn_subset['Churn_Reason'].value_counts()
+	churn_categories = churn_subset['Churn_Category'].value_counts()
 	print(
 		"## Churn Categories and Reasons",
 		f"### Churn Categories:\n{churn_categories}",
+		f"=> {churn_categories.idxmax()} is the most common Churn Category, accounting for {churn_categories.max() / churn_categories.sum() * 100:.2f}% of the Churned customers",
 		f"### Churn Reasons:\n{churn_reasons}",
 		sep='\n\n', end='\n\n', file=OUT
 	)
@@ -391,9 +394,9 @@ def check_outliers() -> None:
 	n = float_cols + native_int_cols
 	n_rows, n_cols = Plot.getFigSize(n_features=len(n))
 	outliers_plot = Plot(figsize=(15, 10), 
-                         nrows=n_rows,
-                         ncols=n_cols, 
-                         title='Outliers in numerical features'
+						nrows=n_rows,
+						ncols=n_cols, 
+						title='Outliers in numerical features'
 	)
 	counter:int = 0
 	for idx, feat in enumerate(n):
