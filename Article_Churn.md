@@ -8,7 +8,7 @@ The project demonstrates how modern data engineering principles can transform ra
 
 ## Architecture Overview
 
-<img src="Flowchart.svg" alt="Flowchart" width="500" />
+<img src="./Datasets/Flowchart.svg" alt="Flowchart" width="500" />
 
 
 The system is built on four main components:
